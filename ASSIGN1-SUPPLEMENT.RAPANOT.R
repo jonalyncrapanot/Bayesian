@@ -42,13 +42,3 @@ data10 <- 0.5*(dnorm(domain, 1,10))/(0.5*(dnorm(domain,1,10) + 0.5*dnorm(domain,
 plot(domain, data10, type="l", col="darkgreen", lwd=5, xlab="y", ylab = "Density",
      main="Posterior Density with Sigma = 10")
 
-#Combine all plots
-library(ggplot2)
-df = data.frame(y=c(replicate(10, "y")),Probability=c(data1,data2,data3, data4, 
-                                                        data5, data6, data7, data8, 
-                                                        data9, data10),
-                sigma=rep(c("sigma = 1","sigma = 2","sigma = 3","sigma = 4",
-                            "sigma = 5", "sigma = 6", "sigma = 7", "sigma = 8",
-                            "sigma = 9", "sigma = 10"),each=200))
-
-ggplot(df,aes(x=y,y=Probability,color=sigma))+geom_line()+theme_bw()+ylab("p(theta=1|y)")
